@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: student-portal-rest
+  datasource:
+    url: jdbc:postgresql://localhost:5432/student_portal
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/master.xml

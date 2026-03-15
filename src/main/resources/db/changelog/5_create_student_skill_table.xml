@@ -1,0 +1,21 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="5" author="kgasparyan">
+        <createTable tableName="student_skill">
+            <column name="student_id" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="fk_student_skill_student"
+                             referencedTableName="student"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="skill_id" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="fk_student_skill_skill"
+                             referencedTableName="skill"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
