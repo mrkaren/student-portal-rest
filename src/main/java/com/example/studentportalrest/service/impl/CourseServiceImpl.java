@@ -1,8 +1,8 @@
 package com.example.studentportalrest.service.impl;
 
-import com.example.studentportalrest.converter.CourseConverter;
 import com.example.studentportalrest.dto.CourseDto;
 import com.example.studentportalrest.dto.SaveCourseDto;
+import com.example.studentportalrest.mapper.CourseMapper;
 import com.example.studentportalrest.model.Course;
 import com.example.studentportalrest.repository.CourseRepository;
 import com.example.studentportalrest.service.CourseService;
@@ -20,35 +20,36 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
+    private final CourseMapper courseMapper;
 
     @Override
     public List<CourseDto> findAll() {
         log.info("Fetching all courses");
-       return CourseConverter.toDtoList(courseRepository.findAll());
+       return courseMapper.toDtoList(courseRepository.findAll());
     }
 
     @Override
     public CourseDto findByName(String name) {
-        return CourseConverter.toDto(courseRepository.findByName(name));
+        return courseMapper.toDto(courseRepository.findByName(name));
     }
 
 
     @Override
     public CourseDto save(SaveCourseDto saveCourseDto) {
-        Course entity = courseRepository.save(CourseConverter.toEntity(saveCourseDto));
-        return CourseConverter.toDto(entity);
+        Course entity = courseMapper.toEntity(saveCourseDto);
+        return courseMapper.toDto(courseRepository.save(entity));
     }
 
     @Override
     public CourseDto update(SaveCourseDto saveCourseDto, int id) {
-        Course entity = CourseConverter.toEntity(saveCourseDto);
+        Course entity = courseMapper.toEntity(saveCourseDto);
         entity.setId(id);
-        return CourseConverter.toDto(courseRepository.save(entity));
+        return courseMapper.toDto(courseRepository.save(entity));
     }
 
     @Override
     public CourseDto findById(Integer id) {
-        return CourseConverter.toDto(courseRepository.findById(id).orElse(null));
+        return courseMapper.toDto(courseRepository.findById(id).orElse(null));
     }
 
 

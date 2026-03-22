@@ -36,7 +36,7 @@ public class CourseEndpoint {
 
     @PostMapping("/courses")
     public ResponseEntity<CourseDto> saveCourse(@RequestBody SaveCourseDto saveCourseDto) {
-        if (courseService.findByName(saveCourseDto.getName()) != null) {
+        if (courseService.findByName(saveCourseDto.getCourseName()) != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
         CourseDto dto = courseService.save(saveCourseDto);

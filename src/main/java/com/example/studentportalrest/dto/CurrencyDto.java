@@ -1,17 +1,16 @@
 package com.example.studentportalrest.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class SaveCourseDto {
+public class CurrencyDto {
 
-    private String courseName;
-    private Double price;
+    private String USD;
+    private String EUR;
+    private String RUB;
 
 }

@@ -1,23 +1,25 @@
 package com.example.studentportalrest.dto;
 
+import com.example.studentportalrest.model.Skill;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CourseDto {
+public class StudentDto {
 
     private int id;
     private String name;
-    private BigDecimal price;
-    private BigDecimal priceUSD;
-    private BigDecimal priceEUR;
-    private BigDecimal priceRUB;
+    private String surname;
+    private String email;
+    private String courseName;
+    private String address;
+    private List<SkillDto> skills;
 
 }
