@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "\"user\"")
 public class User {
 
     @Id
@@ -26,8 +26,6 @@ public class User {
     private String surname;
     private String username;
     private String password;
-    private boolean enabled;
-    private String verificationCode;
 
     @Enumerated(value = EnumType.STRING)
     private UserRole role;

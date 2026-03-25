@@ -10,3 +10,7 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:db/master.xml
+
+jwt:
+  secret: YXNkZmYkIyNzZFNEU0RBQVNERksjQEBkc2ZqZGZrZHNqQEAjZHNmZ2ZnZmdeXiYmWipeJSQkI2RzZHMkIyVzZDQ1MDk5KUkjJCg5V0ZTSUo
+  expiration: 600000
