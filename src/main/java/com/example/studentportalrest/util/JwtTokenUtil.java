@@ -86,7 +86,7 @@ public class JwtTokenUtil {
                 .compact();
     }
 
-    public Boolean validateToken(String token, String email) {
+    public boolean validateToken(String token, String email) {
 
         final String username = getUsernameFromToken(token);
         return (

@@ -27,9 +27,7 @@ public class CourseEndpoint {
         return courseService.findById(id);
     }
 
-    @GetMapping(value = "/courses"
-//            , produces = "application/xml"
-    )
+    @GetMapping("/courses")
     public List<CourseDto> getAllCourses() {
         return courseService.findAll();
     }
@@ -44,7 +42,7 @@ public class CourseEndpoint {
     }
 
     @DeleteMapping("/courses/{id}")
-    public ResponseEntity deleteCourse(@PathVariable int id) {
+    public ResponseEntity<?> deleteCourse(@PathVariable int id) {
         if (courseService.findById(id) != null) {
             courseService.deleteById(id);
             return ResponseEntity.ok().build();

@@ -41,6 +41,7 @@ public class UserEndpoint {
                     .status(HttpStatus.UNAUTHORIZED)
                     .build();
         }
+
         User user = byEmail.get();
         if (passwordEncoder.matches(userAuthRequest.getPassword(), user.getPassword())) {
             return ResponseEntity
