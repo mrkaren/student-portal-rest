@@ -3,6 +3,7 @@ package com.example.studentportalrest.endpoint;
 import com.example.studentportalrest.dto.CourseDto;
 import com.example.studentportalrest.dto.SaveCourseDto;
 import com.example.studentportalrest.service.CourseService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,7 @@ public class CourseEndpoint {
     }
 
     @PostMapping("/courses")
+    @Operation(summary = "Save a new course", description = "Save a new course")
     public ResponseEntity<CourseDto> saveCourse(@RequestBody SaveCourseDto saveCourseDto) {
         if (courseService.findByName(saveCourseDto.getCourseName()) != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();

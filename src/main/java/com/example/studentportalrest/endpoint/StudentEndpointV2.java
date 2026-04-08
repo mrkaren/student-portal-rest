@@ -11,13 +11,13 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/students")
-public class StudentEndpoint {
+@RequestMapping("/v2/students")
+public class StudentEndpointV2 {
 
     private final StudentService studentService;
 
 
-    @GetMapping()
+    @GetMapping
     public List<StudentDto> getStudents() {
         return studentService.findAll();
     }

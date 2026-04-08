@@ -31,7 +31,9 @@ public class RestSecurityConfig {
                         auth
                                 .requestMatchers(
                                         "/user/auth",
-                                        "/user/register"
+                                        "/user/register",
+                                        "/v3/api-docs/**",
+                                        "/swagger-ui/**"
                                 )
                                 .permitAll()
                                 .anyRequest().authenticated()

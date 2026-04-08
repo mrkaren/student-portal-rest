@@ -3,7 +3,7 @@ spring:
     name: student-portal-rest
   datasource:
     url: jdbc:postgresql://localhost:5432/student_portal
-    username: postgres
+    username: ${DB_USERNAME:postgres}
     password: postgres
     driver-class-name: org.postgresql.Driver
 
