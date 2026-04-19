@@ -26,4 +26,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer>, JpaS
     @Modifying
     Page<Student> findAll(Specification<Student> spec, Pageable pageable);
 
+
+    void deleteAllByCourse(Course course);
+
 }

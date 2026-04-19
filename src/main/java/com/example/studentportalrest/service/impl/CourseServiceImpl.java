@@ -6,10 +6,13 @@ import com.example.studentportalrest.mapper.CourseMapper;
 import com.example.studentportalrest.model.Course;
 import com.example.studentportalrest.repository.CourseRepository;
 import com.example.studentportalrest.service.CourseService;
+import com.example.studentportalrest.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +23,7 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
+    private final StudentService studentService;
     private final CourseMapper courseMapper;
 
     @Override
@@ -41,10 +45,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    @Transactional
     public CourseDto update(SaveCourseDto saveCourseDto, int id) {
         Course entity = courseMapper.toEntity(saveCourseDto);
         entity.setId(id);
         return courseMapper.toDto(courseRepository.save(entity));
+
     }
 
     @Override
@@ -54,8 +60,12 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void deleteById(Integer id) {
+        Course byId = courseRepository.findById(id).orElseThrow();
+        studentService.deleteByCourse(byId);
         courseRepository.deleteById(id);
+
     }
 
 }

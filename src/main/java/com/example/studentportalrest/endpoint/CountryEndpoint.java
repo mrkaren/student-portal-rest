@@ -18,6 +18,7 @@ public class CountryEndpoint {
 
     @GetMapping("/countries")
     public List<CountryDto> getCountries() {
+
         return countryMapper.toDto(countryRepository.findAll());
     }
 

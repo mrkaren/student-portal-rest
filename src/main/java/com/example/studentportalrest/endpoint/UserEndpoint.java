@@ -7,6 +7,7 @@ import com.example.studentportalrest.mapper.UserMapper;
 import com.example.studentportalrest.model.User;
 import com.example.studentportalrest.repository.UserRepository;
 import com.example.studentportalrest.util.JwtTokenUtil;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,7 +60,7 @@ public class UserEndpoint {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody SaveUserRequest saveUserRequest) {
+    public ResponseEntity<?> register(@RequestBody @Valid SaveUserRequest saveUserRequest) {
         if (userRepository.findByUsername(saveUserRequest.getUsername()).isPresent()) {
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)

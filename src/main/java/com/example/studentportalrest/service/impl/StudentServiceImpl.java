@@ -2,6 +2,7 @@ package com.example.studentportalrest.service.impl;
 
 import com.example.studentportalrest.dto.StudentDto;
 import com.example.studentportalrest.mapper.StudentMapper;
+import com.example.studentportalrest.model.Course;
 import com.example.studentportalrest.repository.StudentRepository;
 import com.example.studentportalrest.service.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -23,4 +24,8 @@ public class StudentServiceImpl implements StudentService {
        return studentMapper.toDtoList(studentRepository.findAll());
     }
 
+    @Override
+    public void deleteByCourse(Course course) {
+        studentRepository.deleteAllByCourse(course);
+    }
 }
